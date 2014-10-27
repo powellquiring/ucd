@@ -22,7 +22,8 @@ RUN /bin/echo >> /ibm-ucd-install/install.properties \
  && /bin/echo hibernate.connection.url=jdbc\:derby\://localhost\:11377/data >> /ibm-ucd-install/install.properties \
  && /bin/echo hibernate.connection.username=ibm_ucd >> /ibm-ucd-install/install.properties \
  && /bin/echo hibernate.connection.password=password >> /ibm-ucd-install/install.properties \
- && /ibm-ucd-install/install-server.sh
+ && sleep 1s \
+ && /bin/bash /ibm-ucd-install/install-server.sh
 
 # run data copy with "save" now.  the entry point should call it without a parameter to relocate to the volume
 COPY ucd_data_copy.sh /opt/ibm-ucd/server/ucd_data_copy.sh
